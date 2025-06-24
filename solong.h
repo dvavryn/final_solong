@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:50:56 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/24 18:34:16 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/24 19:07:14 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 typedef struct s_data
 {
+	char	**map;
 	void	*mlx;
 	void	*win;
 	void	*textures[5];
@@ -43,7 +44,7 @@ typedef struct s_ffill
 // only for funcheck purposes
 void	funcheck(t_data **env);
 
-void	init_env(t_data **env);
+void	init_env(t_data **env, int argc, char *path);
 void	free_env(t_data **env);
 
 int	closer(t_data **env, int status);
@@ -52,5 +53,6 @@ void	hooks(t_data **env);
 
 void	floodfill(char **copy, char **map);
 void	error_exit(char *msg);
+char	**get_map(char *filename);
 
 #endif

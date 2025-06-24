@@ -122,9 +122,8 @@ char	**copy_split(char **split)
 		out[i] = ft_strdup(split[i]);
 		if (!out[i])
 		{
-			free_split(split);
 			free_split(out);
-			exit(1);
+			return (NULL);
 		}
 	}
 	return (out);
@@ -266,17 +265,17 @@ char	**get_map(char *filename)
 	return (out);
 }
 
-int	main(void)
-{
-	char	**map;
-	ssize_t	i;
+// int	main(void)
+// {
+// 	char	**map;
+// 	ssize_t	i;
 
-	map = get_map("map/map.ber");
-	if (!map)
-		return (-1);
-	i = -1;
-	while (map[++i])
-		printf("%s\n", map[i]);
-	free_split(map);
-	return (0);
-}
+// 	map = get_map("map/map.ber");
+// 	if (!map)
+// 		return (-1);
+// 	i = -1;
+// 	while (map[++i])
+// 		printf("%s\n", map[i]);
+// 	free_split(map);
+// 	return (0);
+// }
