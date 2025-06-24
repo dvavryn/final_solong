@@ -1,0 +1,35 @@
+Does the file exist?
+	Check
+
+Is it the right file specificer
+	Check
+
+Is there something in the map file?
+	Check
+
+Is the map rectangular?
+	Check
+
+Has the map the minimum size?
+	Check
+
+Are there any different characters than 0 1 C E P
+	Check
+
+Is the map enclosed in walls?
+	Check
+
+Is there only one exit?
+	Check
+	
+Is there only one start?
+	Check
+
+Is there at least one collectible?
+	Check
+
+Is the exit accessible?
+	Check
+
+Are all collectibles accessible?
+	Check
