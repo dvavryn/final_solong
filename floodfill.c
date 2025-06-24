@@ -6,13 +6,13 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 17:11:46 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/24 17:54:51 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 00:28:40 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-static void fill(char **arr,  t_ffill start, t_ffill max)
+static void	fill(char **arr, t_ffill start, t_ffill max)
 {
 	int	to_place;
 	int	wall;
@@ -35,9 +35,9 @@ static void fill(char **arr,  t_ffill start, t_ffill max)
 	fill(arr, start, max);
 }
 
-t_ffill get_pos(char c, char **copy)
+t_ffill	get_pos(char c, char **copy)
 {
-	t_ffill out;
+	t_ffill	out;
 
 	out.i = 0;
 	while (copy[out.i])
@@ -54,7 +54,7 @@ t_ffill get_pos(char c, char **copy)
 	return (out);
 }
 
-void	floodfill(char **copy, char **map)
+int	floodfill(char **copy, char **map)
 {
 	t_ffill	start;
 	t_ffill	max;
@@ -72,10 +72,10 @@ void	floodfill(char **copy, char **map)
 		{
 			if (!(copy[i][j] == '1' || copy[i][j] == 'X'))
 			{
-				free_split(copy);
-				free_split(map);
-				error_exit("Invalid map: There is no valid path on the map!");
+				ft_perror_map("There is no valid path on the map!");
+				return (1);
 			}
 		}
 	}
+	return (0);
 }
