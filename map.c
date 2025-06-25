@@ -6,13 +6,14 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 22:28:26 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 00:40:10 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:19:51 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
 static char	**get_file_data(char *filename);
+static int	check_map(char **map);
 
 char	**get_map(char *filename)
 {
@@ -40,19 +41,19 @@ static char	*read_file(int fd)
 
 	b = 1;
 	out = ft_strdup("");
+	if (!out)
+		return (NULL);
 	while (b > 0)
 	{
 		ft_bzero(buf, BUF_SIZE);
 		b = read(fd, buf, BUF_SIZE - 1);
 		if (b == -1)
-		{
-			free(out);
-			close(fd);
-			return (NULL);
-		}
+			return (free(out), close(fd), NULL);
 		tmp = out;
 		out = ft_strjoin(out, buf);
 		free(tmp);
+		if (!out)
+			return (NULL);
 	}
 	return (out);
 }
@@ -67,6 +68,7 @@ static char	**get_file_data(char *filename)
 	if (fd < 0)
 		return (NULL);
 	one_line = read_file(fd);
+	close(fd);
 	if (!one_line)
 		return (NULL);
 	out = ft_split(one_line, '\n');
@@ -76,4 +78,15 @@ static char	**get_file_data(char *filename)
 	return (out);
 }
 
-
+static int	check_map(char **map)
+{
+	if (check_map_size_shape(map))
+		return (1);
+	if (check_map_walls_chars(map))
+		return (1);
+	if (check_map_entity_count(map))
+		return (1);
+	if (check_map_accessibility(map))
+		return (1);
+	return (0);
+}

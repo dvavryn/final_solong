@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:45:38 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 00:19:25 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:03:31 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	closer(t_data **env, int status)
 	exit(status);
 }
 
-int cross(t_data **env)
+int	cross(t_data **env)
 {
 	closer(env, 0);
 	return (0);

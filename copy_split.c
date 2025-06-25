@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 00:51:42 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 01:03:38 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:06:46 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ char	**copy_split(char **split)
 	while (split[++i])
 	{
 		out[i] = ft_strdup(split[i]);
-		if (i == 5)
-		{
-			free(out[i]);
-			out[i] == NULL;
-		}
 		if (!out[i])
 		{
 			rev_free(out, i);
@@ -46,10 +41,10 @@ char	**copy_split(char **split)
 
 static void	rev_free(char **out, ssize_t i)
 {
-	// while (i >= 0)
-	// {
-	// 	free(out[i]);
-	// 	i--;
-	// }
-	// free(out);
+	while (i >= 0)
+	{
+		free(out[i]);
+		i--;
+	}
+	free(out);
 }

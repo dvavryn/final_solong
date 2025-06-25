@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                               */
-/*   check_map.c                                                  */
-/*                                                    + +         +     */
-/*   Bydvavryn <dvavryn@student.42vienna.com>     +#+  +       +#+        */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created2025/06/24 2337 by dvavryn           #+#    #+#             */
-/*   Updated2025/06/25 0067 by dvavryn          ###   ########.fr       */
+/*   Created: 2025/06/25 11:01:29 by dvavryn           #+#    #+#             */
+/*   Updated: 2025/06/25 14:20:05 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
-static int	check_map_size_shape(char **map);
-static int	check_map_walls_chars(char **map);
-static int	check_map_entity_count(char **map);
-static int	check_map_accessibility(char **map);
 
-int	check_map(char **map)
-{
-	if (check_map_size_shape(map))
-		return (1);
-	if (check_map_walls_chars(map))
-		return (1);
-	if (check_map_entity_count(map))
-		return (1);
-	if (check_map_accessibility(map))
-		return (1);
-	return (0);
-}
-
-static int	check_map_accessibility(char **map)
+int	check_map_accessibility(char **map)
 {
 	char	**copy;
 	int		out;
@@ -43,7 +26,7 @@ static int	check_map_accessibility(char **map)
 	return (out);
 }
 
-static int	check_map_size_shape(char **map)
+int	check_map_size_shape(char **map)
 {
 	size_t	i;
 	size_t	j;
@@ -68,7 +51,7 @@ static int	check_map_size_shape(char **map)
 	return (0);
 }
 
-static int	check_map_walls_chars(char **map)
+int	check_map_walls_chars(char **map)
 {
 	ssize_t	i;
 	ssize_t	j;
@@ -96,7 +79,7 @@ static int	check_map_walls_chars(char **map)
 	return (0);
 }
 
-static int	check_map_entity_count_sub(int c, int e, int p, char **map)
+int	check_map_entity_count_sub(int c, int e, int p, char **map)
 {
 	if (c > 0 && e == 1 && p == 1)
 		return (0);
@@ -113,7 +96,7 @@ static int	check_map_entity_count_sub(int c, int e, int p, char **map)
 	return (1);
 }
 
-static int	check_map_entity_count(char **map)
+int	check_map_entity_count(char **map)
 {
 	size_t			i;
 	size_t			j;
@@ -140,4 +123,3 @@ static int	check_map_entity_count(char **map)
 	}
 	return (check_map_entity_count_sub(count[0], count[1], count[2], map));
 }
-

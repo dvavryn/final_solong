@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:47:19 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 01:01:11 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:18:43 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,48 @@ size_t	get_height(char **map)
 	return (i);
 }
 
+void	init_null(t_data **env)
+{
+	(*env)->mlx = NULL;
+	(*env)->win = NULL;
+	(*env)->height = 0;
+	(*env)->width = 0;
+	(*env)->map = NULL;
+	(*env)->i = 0;
+	(*env)->j = 0;
+	(*env)->textures[0] = NULL;
+	(*env)->textures[1] = NULL;
+	(*env)->textures[2] = NULL;
+	(*env)->textures[3] = NULL;
+	(*env)->textures[4] = NULL;
+}
+
 void	init_env(t_data **env, int argc, char *path)
 {
-	char	**map;
-
 	if (argc != 2)
 		error_exit("Wrong usage: ./solong <map>.ber");
 	*env = malloc(sizeof(t_data));
 	if (!*env)
 		exit(1);
-	map = get_map(path);
-	// closer(env, 1);
-	// (*env)->mlx = mlx_init();
-	// if (!(*env)->mlx || !map)
-	// 	closer(env, 1);
-	// (*env)->win = mlx_new_window
-		// ((*env)->mlx, ft_strlen(map[0]) * 32, get_height(map) * 32, "so-long");
-	// if (!(*env)->win)
-	// 	closer(env, 1);
-	(*env)->map = map;
-	// get_textures(env);
+	init_null(env);
+	(*env)->map = get_map(path);
+	if (!(*env)->map)
+		closer(env, 4);
+	(*env)->mlx = mlx_init();
+	if (!(*env)->mlx || !(*env)->map)
+		closer(env, 1);
+	(*env)->win = mlx_new_window
+		((*env)->mlx, ft_strlen((*env)->map[0]) * 32,
+			get_height((*env)->map) * 32, "so-long");
+	if (!(*env)->win)
+		closer(env, 1);
+	get_textures(env);
 }
 
-void	free_textures(t_data **env)
+void	free_env(t_data **env)
 {
+	if (!env || !*env)
+		return ;
 	if ((*env)->textures[0])
 		mlx_destroy_image((*env)->mlx, (*env)->textures[0]);
 	if ((*env)->textures[1])
@@ -73,11 +91,6 @@ void	free_textures(t_data **env)
 		mlx_destroy_image((*env)->mlx, (*env)->textures[3]);
 	if ((*env)->textures[4])
 		mlx_destroy_image((*env)->mlx, (*env)->textures[4]);
-}
-
-void	free_env(t_data **env)
-{
-	free_textures(env);
 	if ((*env)->win)
 		mlx_destroy_window((*env)->mlx, (*env)->win);
 	if ((*env)->mlx)
@@ -89,4 +102,5 @@ void	free_env(t_data **env)
 		free_split((*env)->map);
 	if (*env)
 		free(*env);
+	env = NULL;
 }

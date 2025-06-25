@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:52:35 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 01:01:03 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 13:36:16 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ int	main(int argc, char **argv)
 	t_data	*env;
 	int		i;
 	int		j;
+
 	init_env(&env, argc, argv[1]);
-	// mlx_put_image_to_window(env->mlx, env->win, env->textures[0], 0, 0);
-	// hooks(&env);
-	// mlx_loop_hook(env->mlx, render, &env);
-	// mlx_loop(env->mlx);
+	mlx_put_image_to_window(env->mlx, env->win, env->textures[0], 0, 0);
+	hooks(&env);
+	mlx_loop_hook(env->mlx, render, &env);
+	mlx_loop(env->mlx);
 }

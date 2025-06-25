@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:50:56 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 00:41:35 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 14:20:32 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ int		floodfill(char **copy, char **map);
 void	error_exit(char *msg);
 char	**get_map(char *filename);
 void	move(int key, char **map);
-int		check_map(char **map);
 int		check_file(char *filename);
 char	**copy_split(char **split);
 void	move_get_pos(t_ffill *pos, char **map);
 size_t	get_count(char c, char **map);
 void	ft_perror_map(char *s);
 void	ft_perror_file(char *s);
+int	check_map_size_shape(char **map);
+int	check_map_walls_chars(char **map);
+int	check_map_entity_count(char **map);
+int	check_map_accessibility(char **map);
 
 #endif
