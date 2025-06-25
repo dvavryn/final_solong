@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:52:41 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 12:40:03 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 20:21:43 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	check_file_type(char *filename)
 
 static int	check_file_empty(int fd)
 {
-	size_t	b;
+	ssize_t	b;
 	char	buf[10];
 
 	b = read(fd, buf, 10);

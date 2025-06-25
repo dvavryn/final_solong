@@ -31,7 +31,7 @@ clean	:
 	@make clean -C libft
 	@rm -f $(OBJS)
 
-fclean	:
+fclean	: clean
 	@make fclean -C libft
 	@rm -f $(NAME)
 

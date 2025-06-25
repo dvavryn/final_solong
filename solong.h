@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:50:56 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 17:49:49 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 20:22:26 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_data
 
 typedef struct s_ffill
 {
-	size_t	i;
-	size_t	j;
+	ssize_t	i;
+	ssize_t	j;
 }	t_ffill;
 
 void	init_env(t_data **env, int argc, char *path);
