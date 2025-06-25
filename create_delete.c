@@ -6,54 +6,15 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:47:19 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 14:18:43 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 18:09:56 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-static void	get_textures(t_data **env)
-{
-	int	i;
-	int	j;
-
-	(*env)->textures[0] = mlx_xpm_file_to_image
-		((*env)->mlx, "xpm/bg.xpm", &i, &j);
-	(*env)->textures[1] = mlx_xpm_file_to_image
-		((*env)->mlx, "xpm/collect.xpm", &i, &j);
-	(*env)->textures[2] = mlx_xpm_file_to_image
-		((*env)->mlx, "xpm/exit.xpm", &i, &j);
-	(*env)->textures[3] = mlx_xpm_file_to_image
-		((*env)->mlx, "xpm/player.xpm", &i, &j);
-	(*env)->textures[4] = mlx_xpm_file_to_image
-		((*env)->mlx, "xpm/wall.xpm", &i, &j);
-}
-
-size_t	get_height(char **map)
-{
-	ssize_t	i;
-
-	i = -1;
-	while (map[++i])
-		;
-	return (i);
-}
-
-void	init_null(t_data **env)
-{
-	(*env)->mlx = NULL;
-	(*env)->win = NULL;
-	(*env)->height = 0;
-	(*env)->width = 0;
-	(*env)->map = NULL;
-	(*env)->i = 0;
-	(*env)->j = 0;
-	(*env)->textures[0] = NULL;
-	(*env)->textures[1] = NULL;
-	(*env)->textures[2] = NULL;
-	(*env)->textures[3] = NULL;
-	(*env)->textures[4] = NULL;
-}
+static void		get_textures(t_data **env);
+static size_t	get_height(char **map);
+static void		init_null(t_data **env);
 
 void	init_env(t_data **env, int argc, char *path)
 {
@@ -103,4 +64,47 @@ void	free_env(t_data **env)
 	if (*env)
 		free(*env);
 	env = NULL;
+}
+
+static void	get_textures(t_data **env)
+{
+	int	i;
+	int	j;
+
+	(*env)->textures[0] = mlx_xpm_file_to_image
+		((*env)->mlx, "textures/bg.xpm", &i, &j);
+	(*env)->textures[1] = mlx_xpm_file_to_image
+		((*env)->mlx, "textures/collect.xpm", &i, &j);
+	(*env)->textures[2] = mlx_xpm_file_to_image
+		((*env)->mlx, "textures/exit.xpm", &i, &j);
+	(*env)->textures[3] = mlx_xpm_file_to_image
+		((*env)->mlx, "textures/player.xpm", &i, &j);
+	(*env)->textures[4] = mlx_xpm_file_to_image
+		((*env)->mlx, "textures/wall.xpm", &i, &j);
+}
+
+static size_t	get_height(char **map)
+{
+	ssize_t	i;
+
+	i = -1;
+	while (map[++i])
+		;
+	return (i);
+}
+
+static void	init_null(t_data **env)
+{
+	(*env)->mlx = NULL;
+	(*env)->win = NULL;
+	(*env)->height = 0;
+	(*env)->width = 0;
+	(*env)->map = NULL;
+	(*env)->i = 0;
+	(*env)->j = 0;
+	(*env)->textures[0] = NULL;
+	(*env)->textures[1] = NULL;
+	(*env)->textures[2] = NULL;
+	(*env)->textures[3] = NULL;
+	(*env)->textures[4] = NULL;
 }

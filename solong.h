@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:50:56 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 17:31:43 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 17:49:49 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // # include "mlx/mlx.h"
 # include <mlx.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
@@ -45,16 +45,12 @@ typedef struct s_ffill
 	size_t	j;
 }	t_ffill;
 
-// only for funcheck purposes
-
 void	init_env(t_data **env, int argc, char *path);
 void	free_env(t_data **env);
-
-int	closer(t_data **env, int status);
-int	keyhandler(int key, t_data **env);
+int		closer(t_data **env, int status);
+int		keyhandler(int key, t_data **env);
 void	hooks(t_data **env);
-
-int		floodfill(char **copy, char **map);
+int		floodfill(char **copy);
 void	error_exit(char *msg);
 char	**get_map(char *filename);
 void	move(int key, char **map);
@@ -64,9 +60,9 @@ void	move_get_pos(t_ffill *pos, char **map);
 size_t	get_count(char c, char **map);
 void	ft_perror_map(char *s);
 void	ft_perror_file(char *s);
-int	check_map_size_shape(char **map);
-int	check_map_walls_chars(char **map);
-int	check_map_entity_count(char **map);
-int	check_map_accessibility(char **map);
+int		check_map_size_shape(char **map);
+int		check_map_walls_chars(char **map);
+int		check_map_entity_count(char **map);
+int		check_map_accessibility(char **map);
 
 #endif

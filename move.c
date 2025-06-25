@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 22:37:01 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 14:52:43 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 18:17:56 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,15 @@ static void	move_d(unsigned int *moves, t_ffill pos, char **map)
 void	move(int key, char **map)
 {
 	t_ffill				pos;
-	size_t				max;
 	static unsigned int	moves = 0;
 
 	move_get_pos(&pos, map);
 	if (key == 'w')
-	{
 		move_w(&moves, pos, map);
-	}
 	if (key == 'a')
-	{
 		move_a(&moves, pos, map);
-	}
 	if (key == 's')
-	{
 		move_s(&moves, pos, map);
-	}
 	if (key == 'd')
-	{
 		move_d(&moves, pos, map);
-	}
 }

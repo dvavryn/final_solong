@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 11:01:29 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 14:20:05 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 17:54:46 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_map_accessibility(char **map)
 	if (!copy)
 		return (1);
 	out = 0;
-	out = floodfill(copy, map);
+	out = floodfill(copy);
 	free_split(copy);
 	return (out);
 }
@@ -43,7 +43,7 @@ int	check_map_size_shape(char **map)
 		i++;
 	}
 	if (i < 3 || j < 3 || (i == 3 && j < 5) || (i < 5 && j == 3)
-		|| (i == 4 && j < 4) || i < 4 && j == 4)
+		|| (i == 4 && j < 4) || (i < 4 && j == 4))
 	{
 		ft_perror_map("Map does not have the minimum size!");
 		return (1);
@@ -79,7 +79,7 @@ int	check_map_walls_chars(char **map)
 	return (0);
 }
 
-int	check_map_entity_count_sub(int c, int e, int p, char **map)
+int	check_map_entity_count_sub(int c, int e, int p)
 {
 	if (c > 0 && e == 1 && p == 1)
 		return (0);
@@ -121,5 +121,5 @@ int	check_map_entity_count(char **map)
 		}
 		i++;
 	}
-	return (check_map_entity_count_sub(count[0], count[1], count[2], map));
+	return (check_map_entity_count_sub(count[0], count[1], count[2]));
 }
