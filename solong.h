@@ -6,15 +6,15 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:50:56 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 14:20:32 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/25 17:31:43 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SOLONG_H
 # define SOLONG_H
 
-# include "mlx/mlx.h"
-// # include <mlx.h>
+// # include "mlx/mlx.h"
+# include <mlx.h>
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <stdlib.h>
