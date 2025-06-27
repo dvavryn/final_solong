@@ -6,7 +6,7 @@
 /*   By: dvavryn <dvavryn@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 12:47:19 by dvavryn           #+#    #+#             */
-/*   Updated: 2025/06/25 18:09:56 by dvavryn          ###   ########.fr       */
+/*   Updated: 2025/06/27 11:54:47 by dvavryn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,12 @@ static void	get_textures(t_data **env)
 		((*env)->mlx, "textures/player.xpm", &i, &j);
 	(*env)->textures[4] = mlx_xpm_file_to_image
 		((*env)->mlx, "textures/wall.xpm", &i, &j);
+	if (!((*env)->textures[0] && (*env)->textures[1] && (*env)->textures[2]
+			&& (*env)->textures[3] && (*env)->textures[4]))
+	{
+		free_env(env);
+		error_exit("Textures are missing!");
+	}
 }
 
 static size_t	get_height(char **map)
